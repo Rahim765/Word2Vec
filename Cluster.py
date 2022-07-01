@@ -123,6 +123,7 @@ class Cluster:
         cPrevious = self.N
         cCurrent = self.N / self.g
         self.dCurrentCalculator()
+        flag = 0
         while cCurrent >= self.cTarget:
             seed = self.select_seed(self.D_current, cCurrent)
             p_i = []
@@ -166,7 +167,10 @@ class Cluster:
                     self.D_current[i][j] = (1 / len(p_i) * len(p_j)) * sum
             cPrevious = cCurrent
             cCurrent = cCurrent / self.g
+            if flag == 1:
+                break
             if cCurrent < self.cTarget:
+                flag = 1
                 cCurrent = self.cTarget
         mn =[]
         for t in self.label:
