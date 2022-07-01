@@ -29,11 +29,12 @@ print(model.wv.most_similar('physics'))
 
 p  = numpy.array(p)
 
-cluster = Cluster(data = p , cTarget=5 ,k =5)
+cluster = Cluster(data = p[0:500] , cTarget=5 ,k =5)
 print ("salmab")
 cluster.fit()
 
 print ("salma")
+
 
 
 #min_count is the minimum time a word should appear in the dataset
