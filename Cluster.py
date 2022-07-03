@@ -69,7 +69,7 @@ class Cluster:
 
         while current_seed < C:
 
-            print(current_seed)
+
             kseeds = []
             for i in range(self.k):
                 min = 9999999
@@ -84,7 +84,7 @@ class Cluster:
 
                 kseeds.append(index)
 
-            # print(kseeds)
+
             max = 0
             for i in range(self.k):
                 sum = 0
@@ -95,13 +95,13 @@ class Cluster:
 
             seeds.append(kseeds[max])
             current_seed = current_seed + 1
-        print("seeds: ")
-        print(seeds)
+
+
         return seeds
 
     def dCurrentCalculator(self):
         for i in range(self.N):
-            print(i)
+
             col = []
             for j in range(self.N):
                 sum = 0
@@ -117,7 +117,7 @@ class Cluster:
 
             self.D_current.append(col)
 
-        print(self.D_current)
+
 
     def clustring(self):
         cPrevious = self.N
@@ -128,8 +128,8 @@ class Cluster:
             seed = self.select_seed(self.D_current, cCurrent)
             p_i = []
             p_j = []
-            print("CCurrent :")
-            print(cCurrent)
+
+
             for i in range(self.N):
 
                 if i not in seed:
@@ -142,7 +142,7 @@ class Cluster:
                     self.label[i] = index  # self.D_current[self.label[i]][index]
 
             for i in range(len(seed)):
-                print(i)
+
                 for j in range(len(seed)):
 
                     col = []
@@ -176,92 +176,15 @@ class Cluster:
         for t in self.label:
             if t not in mn:
                 mn.append(t)
-        print(self.label)
-        print(mn)
+
+
 
 
     def fit(self):
-        print("hi0")
         self.distance()
-        print("hi1")
-
         self.relation()
-        print("hi2")
-
-        # self.select_seed(self.D_original, self.cTarget)
-
-        print("hi3")
         self.clustring()
-        # self.dCurrentCalculator()
-        # print("hi4")
+        return self.label
 
-    #
-    # def dCurrentCalculator(self):
-    #     for i in range(self.N):
-    #         print(i)
-    #         col = []
-    #         for j in range(self.N):
-    #             sum = 0
-    #             for k in range(len(self.R_k[i])):
-    #                 sum2 = 0
-    #                 for p in range(len(self.R_k[j])):
-    #                     ab = self.R_k[i][k] - self.R_k[j][p]
-    #                     sub = np.linalg.norm(ab)
-    #                     sum2 = sum2 + sub
-    #                 sum = sum + sum2
-    #
-    #             sum = (1 / math.pow(self.k + 1, 2)) * sum
-    #             col.append(sum)
-    #
-    #         self.D_current.append(col)
-    #
-    #     print(self.D_current)
 
-    #
-    # def select_seed(self):
-    #     min = 99999999
-    # current_seed = 0
-    # index = 0
-    # for i in range(self.N):
-    #     sum = 0
-    #     for j in range(len(self.D_original[i])):
-    #         sum = sum + self.D_original[i][j]
-    #
-    #     if sum < min:
-    #         min = sum
-    #         index = i
-    #
-    # current_seed = current_seed + 1
-    # self.seeds.append(index)
-    # if current_seed == self.cTarget:
-    #     return
-    #
-    # while current_seed < self.cTarget:
-    #     print(self.seeds)
-    #     kseeds = []
-    #     for i in range(self.k):
-    #         min = 9999999
-    #         for j in range(self.N):
-    #             sum = 0
-    #             for k in range(len(self.D_original[j])):
-    #                 sum = sum + self.D_original[j][k]
-    #
-    #             if sum < min and (j not in self.seeds) and (j not in kseeds):
-    #                 min = sum
-    #                 index = j
-    #
-    #         kseeds.append(index)
-    #
-    #     print(kseeds)
-    #     max = 0
-    #     for i in range(self.k):
-    #         sum = 0
-    #         for j in range(len(self.seeds)):
-    #             sum = sum + self.D_original[self.seeds[j]][kseeds[i]]
-    #         if sum > max:
-    #             max = i
-    #
-    #     self.seeds.append(kseeds[max])
-    #     current_seed = current_seed + 1
-    # print("seeds: ")
-    # print(self.seeds)
+

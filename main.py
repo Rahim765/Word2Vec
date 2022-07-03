@@ -19,21 +19,15 @@ for i in data:
     p.append(i.tolist())
     #print(p[len(p)-1])
 
-print(len(p))
-print(type(p))
-print(p[0])
-
-
-
 print(model.wv.most_similar('physics'))
 
 p  = numpy.array(p)
 
 cluster = Cluster(data = p[0:500] , cTarget=5 ,k =5)
-print ("salmab")
-cluster.fit()
 
-print ("salma")
+labels = cluster.fit()
+print(labels)
+
 
 
 
